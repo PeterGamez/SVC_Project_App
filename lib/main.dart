@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPageFinished: (url) {},
       ),
     )
-    ..loadRequest(Uri.parse('https://lastboss.itsvc.me'));
+    ..loadRequest(Uri.parse('https://lastboss.itsvc.dev'));
 
   @override
   Widget build(BuildContext context) {
