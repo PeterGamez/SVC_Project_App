@@ -40,13 +40,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     )
     ..loadRequest(Uri.parse('https://lastboss.itsvc.dev'));
-
+    
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 1,
-        // set backgroundColor to 333399
         backgroundColor: Colors.grey[600],
       ),
       body: WillPopScope(
