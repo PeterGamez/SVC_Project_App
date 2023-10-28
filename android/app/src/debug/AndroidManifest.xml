@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="Intra Check Debug"
+        android:label="Intra Check"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:category="android.intent.category.APP_BROWSER"
@@ -11,6 +11,5 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 </manifest>

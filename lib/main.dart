@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,17 +31,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late final controller = WebViewController()
-    ..setJavaScriptMode(JavaScriptMode.unrestricted)
-    ..setNavigationDelegate(
-      NavigationDelegate(
-        onPageStarted: (url) {},
-        onProgress: (progress) {},
-        onPageFinished: (url) {},
-      ),
-    )
-    ..loadRequest(Uri.parse('https://lastboss.itsvc.dev'));
-    
+  late final WebViewController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+   _requestStoragePermission();
+
+    controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageStarted: (url) {},
+          onProgress: (progress) {},
+          onPageFinished: (url) {},
+        ),
+      )
+      ..loadRequest(Uri.parse('https://lastboss.itsvc.dev'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,5 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: WebViewWidget(controller: controller),
       ),
     );
+  }
+
+  Future<void> _requestStoragePermission() async {
+    await Permission.storage.request();
   }
 }
